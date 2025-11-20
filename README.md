@@ -18,9 +18,10 @@ docker run -d --cap-add=NET_ADMIN \
 -e REMOTEHOST=*** \
 -e PROXYUSER=*** \
 -e PROXYPASSWORD=*** \
---name sstpc \
+--name proxy_sstp \
 -p 1080:1080 \
-proxy_sstp
+proxy_sstp \
+sh -c "ip route add 192.168.2.0/24 via 172.17.0.1 dev eth0"
 ```
 
 After starting the container for the first connection, authentication is needed.
